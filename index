@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Be My Valentine</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        text-align: center;
+        background: url('037384db-70ef-4623-b84b-7453710de361.jpg') no-repeat center center;
+        background-size: cover;
+    }
+
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+    }
+
+    .content {
+        position: relative;
+        z-index: 2;
+        color: white;
+        padding: 20px;
+        animation: fadeIn 1.5s ease forwards;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+        animation: slideDown 1.2s ease forwards;
+    }
+
+    .buttons {
+        animation: fadeInUp 1.8s ease forwards;
+    }
+
+    button {
+        padding: 14px 32px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 12px;
+        background: rgba(255,255,255,0.15);
+        color: white;
+        backdrop-filter: blur(6px);
+        transition: 0.3s;
+    }
+
+    #yesBtn { background: rgba(255,0,0,0.8); }
+    #noBtn { background: rgba(0,0,0,0.6); }
+
+    button:hover { transform: scale(1.1); }
+
+    #loveMessage {
+        display: none;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 15px red;
+        animation: zoomIn 1.5s ease forwards;
+        z-index: 3;
+        position: relative;
+        padding: 20px;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-40px);} to { opacity:1; transform: translateY(0);} }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px);} to { opacity:1; transform: translateY(0);} }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.6);} to { opacity:1; transform: scale(1);} }
+</style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <div class="content" id="content">
+        <h1>Will you be my Valentine Rish? ❤️</h1>
+        <div class="buttons">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div id="loveMessage">Yayyy!!!<br>You are now my forever Valentine Baby.<br>I love you more than words can say baby.</div>
+
+    <audio autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+<script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const content = document.getElementById("content");
+    const msg = document.getElementById("loveMessage");
+
+    yesBtn.addEventListener("click", () => {
+        content.style.display = "none";
+        msg.style.display = "block";
+    });
+
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.position = "absolute";
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+</script>
+</body>
+</html>
